@@ -1,11 +1,14 @@
 import { motion } from "framer-motion";
 import React from "react";
+import { urlFor } from "../sanity";
+import { Skill } from "../typings";
 
 type Props = {
+  skill: Skill;
   directionLeft?: boolean;
 };
 
-function Skill({ directionLeft }: Props) {
+function Skill({ directionLeft, skill }: Props) {
   return (
     <div className="group relative flex cursor-pointer">
       <motion.img
@@ -15,16 +18,22 @@ function Skill({ directionLeft }: Props) {
         }}
         transition={{ diration: 1 }}
         whileInView={{ opacity: 1, x: 0 }}
-        src="https://mpng.subpng.com/20180810/biz/kisspng-javascript-scalable-vector-graphics-logo-encapsula-javascript-le-ekran-grnts-almak-alpere-5b6dbeb48e4583.2854840415339189005828.jpg"
+        src={urlFor(skill.image).url()}
         alt="tech logo"
 
-        className="rounded-full border border-gray-500 object-cover w-24 h-24 md:w-28 md:h-28 xl:w-32 xl:h-32 filter group-hover:grayscale transition duration-300 ease-in-out"
+        className="rounde object-contain filter group-hover:grayscale transition duration-300 ease-in-out
+        w-16 h-16 !p-0
+        mx:!w-20 mx:!h-20
+        md:!w-24 md:!h-24 
+        lg:!w-20 lg:!h-20
+        xl:!w-[calc(96px+1vw-24px)] xl:!h-[calc(96px+1vw-24px)]"
       />
 
-      <div className="absolute opacity-0 group-hover:opacity-80 transition duration-300 ease-in-out group-hover:bg-white h-24 w-24 md:h-28 xl:w-32 xl:h-32 rounded-full z-0">
+      <div className="absolute opacity-0 group-hover:opacity-80 transition duration-300 ease-in-out group-hover:bg-white rounded z-20
+      h-[100%] w-[100%] ">
         <div className="flex items-center justify-center h-full">
-            <p className="text-3xl font-bold text-black opacity-100">
-                100%
+            <p className="text-xl font-bold text-black opacity-100">
+                {skill.progress + "%"}
             </p>
         </div>
       </div>

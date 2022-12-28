@@ -1,11 +1,16 @@
 import { motion } from "framer-motion";
-import Link from "next/link";
 import React from "react";
 import { SocialIcon } from "react-social-icons";
+import { Social } from "../typings";
 
-type Props = {};
+type Props = {
+  socials: Social[];
+};
 
-export default function Header({}: Props) {
+export default function Header({socials}: Props) {
+  console.log("header component");
+  console.log("🚀 ~ file: Header.tsx:12 ~ Header ~ socials", socials)
+  
   return (
     <header className="sticky top-0 p-5 flex items-start justify-between max-w-7xl mx-auto z-20 xl:items-center">
       <motion.div
@@ -25,24 +30,17 @@ export default function Header({}: Props) {
         className="flex flex-row items-center"
       >
         {/* Social Icons */}
-        <SocialIcon
-          url="https://www.youtube.com/channel/UCexdj7jsV3esxyYbMHSu28Q/featured"
-          fgColor="gray"
-          bgColor="transparent"
-        />
-        <SocialIcon
-          url="https://www.youtube.com/channel/UCexdj7jsV3esxyYbMHSu28Q/featured"
-          fgColor="gray"
-          bgColor="transparent"
-        />
-        <SocialIcon
-          url="https://www.youtube.com/channel/UCexdj7jsV3esxyYbMHSu28Q/featured"
-          fgColor="gray"
-          bgColor="transparent"
-        />
+        {/*03:21*/}
+        {socials.map((social) => (
+            <SocialIcon
+              key={social._id}
+              url={social.url}
+              fgColor="gray"
+              bgColor="transparent"
+            />  
+        ))}
       </motion.div>
 
-      <Link href="#contact">
         <motion.div
           initial={{
             x: 500,
@@ -60,6 +58,7 @@ export default function Header({}: Props) {
           className="flex flex-row items-center text-gray-300 cursor pointer"
         >
           <SocialIcon
+            href="#contact"
             className="cursor-pointer"
             network="email"
             fgColor="gray"
@@ -69,7 +68,6 @@ export default function Header({}: Props) {
             Get In Touch
           </p>
         </motion.div>
-      </Link>
     </header>
   );
 }
