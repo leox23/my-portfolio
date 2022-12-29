@@ -3,6 +3,7 @@ import React from "react";
 import { urlFor } from "../sanity";
 import { Project } from "../typings";
 import Image from 'next/image'
+import Link from "next/link";
 
 type Props = {
   projects: Project[];
@@ -56,8 +57,11 @@ function Projects({ projects }: Props) {
                 <span className="underline decoration-[#F7AB0A]">
                   Case Study {i + 1} {" of "} {projects.length}:
                 </span>{" "}
-                {project?.title} 
-                {project?.linkToBuild ? <span className="text-[80%]"> ➚</span> : ""}
+                <Link href={project.linkToBuild ? project.linkToBuild : "#"}  target="_blank">
+                  
+                    {project?.title} 
+                    {project?.linkToBuild ? <span className="text-[80%]"> ➚</span> : ""}
+                </Link>
               </h4>
               <div className="techs-container flex items-center space-x-2 justify-center !m-0 !mt-2">
                 {project?.texhnologies.map((technology) => (
