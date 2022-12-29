@@ -1,8 +1,8 @@
-/* eslint-disable react/jsx-key */
 import { motion } from "framer-motion";
 import React from "react";
 import { urlFor } from "../sanity";
 import { Project } from "../typings";
+import Image from 'next/image'
 
 type Props = {
   projects: Project[];
@@ -33,7 +33,7 @@ function Projects({ projects }: Props) {
           <div className="card w-screen  min-h-fit flex-shrink-0 snap-center flex flex-col space-y-5 items-center justify-center x
           !p-0 grow-[2]
           sm:p-20 
-          md:p-44 md:space-y-1">
+          md:p-44 md:space-y-1" key={project._id}>
             <motion.img
               initial={{
                 y: -100,
@@ -61,13 +61,16 @@ function Projects({ projects }: Props) {
               </h4>
               <div className="techs-container flex items-center space-x-2 justify-center !m-0 !mt-2">
                 {project?.texhnologies.map((technology) => (
-                  <img 
-                  className="
-                  w-6 h-6
-                  mx:w-10 mx:h-10
-                  sm:w-10 sm:h-10"
+                  <Image
+                    width="100"
+                    height="100"
+                    className="
+                    w-6 h-6
+                    mx:w-10 mx:h-10
+                    sm:w-10 sm:h-10"
                     src={urlFor(technology.image).url()} 
                     alt="tech logo" 
+                    key={technology._id}
                   />
                 ))}
               </div>

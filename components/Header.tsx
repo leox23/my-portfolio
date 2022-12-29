@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import Link from "next/link";
 import React from "react";
 import { SocialIcon } from "react-social-icons";
 import { Social } from "../typings";
@@ -8,9 +9,6 @@ type Props = {
 };
 
 export default function Header({socials}: Props) {
-  console.log("header component");
-  console.log("🚀 ~ file: Header.tsx:12 ~ Header ~ socials", socials)
-  
   return (
     <header className="sticky top-0 p-5 flex items-start justify-between max-w-7xl mx-auto z-20 xl:items-center">
       <motion.div
@@ -55,7 +53,7 @@ export default function Header({socials}: Props) {
           transition={{
             duation: 1.5,
           }}
-          className="flex flex-row items-center text-gray-300 cursor pointer"
+          className="flex flex-row items-center text-gray-300 cursor pointer justify-center"
         >
           <SocialIcon
             href="#contact"
@@ -64,9 +62,11 @@ export default function Header({socials}: Props) {
             fgColor="gray"
             bgColor="transparent"
           />
-          <p className="uppercase hidden md:inline-flex text-sm text-gray-400 ">
-            Get In Touch
-          </p>
+          <Link href="#contact" className="cursor-pointer flex items-center">
+              <p className="uppercase hidden md:inline-flex text-sm text-gray-400 ">
+                Get In Touch
+              </p>
+          </Link>
         </motion.div>
     </header>
   );

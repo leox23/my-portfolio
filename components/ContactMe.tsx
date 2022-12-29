@@ -1,6 +1,6 @@
 import React from "react";
 import { PhoneIcon, EnvelopeIcon, MapPinIcon } from "@heroicons/react/24/solid";
-import { IoLogoWhatsapp } from 'react-icons/Io'
+import { IoLogoWhatsapp } from 'react-icons/io'
 import { useForm, SubmitHandler } from "react-hook-form"
 import { Cursor } from "./Cursor";
 import { PageInfo } from "../typings";
