@@ -28,6 +28,10 @@ const Home = ({ pageInfo, experiences, projects, skills, socials }: Props) => {
     <div className="bg-[rgb(36,36,36)] text-white h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#F7AB0A]/80">
       <Head>
         <title>Leo`s Portfolio</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon"  type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
+        <link rel="manifest" href="/site.webmanifest" />
       </Head>
       <Header socials={socials} />
       <section id="hero" className="snap-start">
@@ -81,11 +85,11 @@ const Home = ({ pageInfo, experiences, projects, skills, socials }: Props) => {
 export default Home;
 
 export const getStaticProps : GetStaticProps<Props> = async () => {
-  const socials: Social[] = await fetchSocials();
-  const pageInfo: PageInfo = await fetchPageInfo();
-  const experiences: Experience[] = await fetchExperiences();
-  const skills: Skill[] = await fetchSkills();
-  const projects: Project[] = await fetchProjects();
+  const socials: Social[] = await fetchSocials() || null;
+  const pageInfo: PageInfo = await fetchPageInfo() || null;
+  const experiences: Experience[] = await fetchExperiences() || null;
+  const skills: Skill[] = await fetchSkills() || null;
+  const projects: Project[] = await fetchProjects() || null;
 
   return {
     props: {

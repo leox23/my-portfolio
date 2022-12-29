@@ -21,8 +21,6 @@ export default function Hero({ pageInfo }: Props) {
       ],
       loop: 0,
       delaySpeed: 2000,
-      // typeSpeed: 20,
-      //onLoopDone: () => console.log("done from typewriter hook")
     });
     return (
       <div
@@ -48,6 +46,7 @@ export default function Hero({ pageInfo }: Props) {
 
           <h1
             className="font-semibold px-10 z-30
+            text-xl
           mx:text-3xl lg:text-6xl "
           >
             <span>{text}</span>
