@@ -1,5 +1,5 @@
 import type { GetStaticProps } from "next";
-import Head from "next/head"; 
+import Head from "next/head";
 import Link from "next/link";
 import About from "../components/About";
 import ContactMe from "../components/ContactMe";
@@ -8,7 +8,7 @@ import Header from "../components/Header";
 import Hero from "../components/Hero";
 import Projects from "../components/Projects";
 import Skills from "../components/Skills";
-import { PageInfo, Experience, Project, Skill, Social } from "../typings"
+import { PageInfo, Experience, Project, Skill, Social } from "../typings";
 import { fetchPageInfo } from "../utils/fetchPageInfo";
 import { fetchExperiences } from "../utils/fetchExperiences";
 import { fetchSkills } from "../utils/fetchSkills";
@@ -21,7 +21,7 @@ type Props = {
   experiences: Experience[];
   skills: Skill[];
   projects: Project[];
-}
+};
 
 const Home = ({ pageInfo, experiences, projects, skills, socials }: Props) => {
   return (
@@ -31,15 +31,15 @@ const Home = ({ pageInfo, experiences, projects, skills, socials }: Props) => {
       </Head>
       <Header socials={socials} />
       <section id="hero" className="snap-start">
-        <Hero pageInfo = {pageInfo} />
+        <Hero pageInfo={pageInfo} />
       </section>
 
       <section id="about" className="snap-center">
-        <About pageInfo = {pageInfo} />
+        <About pageInfo={pageInfo} />
       </section>
 
       <section id="experience" className="snap-center">
-        <WorkExperience experiences = {experiences} />
+        <WorkExperience experiences={experiences} />
       </section>
 
       <section id="skills" className="snap-start">
@@ -47,11 +47,11 @@ const Home = ({ pageInfo, experiences, projects, skills, socials }: Props) => {
       </section>
 
       <section id="projects" className="snap-start">
-        <Projects projects={projects}/>
+        <Projects projects={projects} />
       </section>
 
       <section id="contact" className="snap-start">
-        <ContactMe pageInfo={pageInfo}/>
+        <ContactMe pageInfo={pageInfo} />
       </section>
 
       <Link href="#hero" className="z-30">
@@ -80,7 +80,7 @@ const Home = ({ pageInfo, experiences, projects, skills, socials }: Props) => {
 
 export default Home;
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
+export const getServerSideProps : GetStaticProps<Props> = async () => {
   const socials: Social[] = await fetchSocials();
   const pageInfo: PageInfo = await fetchPageInfo();
   const experiences: Experience[] = await fetchExperiences();
@@ -93,11 +93,11 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       experiences,
       skills,
       projects,
-      socials
+      socials,
     },
     // Next.js will attempt to re-generate de page
     // - When a request comes in
     // - At most once every 10 seconds
-    revalidate: 10
-  }
-}
+    // revalidate: 10,
+  };
+};

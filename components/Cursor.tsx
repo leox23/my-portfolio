@@ -7,7 +7,7 @@ interface CursorProps {
 
 export const Cursor = ({
   cursorStyle = "|",
-  cursorColor = "inherit"
+  cursorColor = "inherit",
 }: CursorProps): JSX.Element => {
   return (
     <span className={styles.blinkingCursor} style={{ color: cursorColor }}>
