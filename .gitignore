@@ -8,6 +8,7 @@ node_modules
 /.pnp
 .pnp.js
 sanity/node_modules
+/Logos/
 
 # testing
 /coverage
